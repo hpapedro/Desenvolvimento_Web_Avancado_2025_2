@@ -1,0 +1,9 @@
+### Cadastrar um novo Usuario
+POST http://localhost:5268/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "Pedro Gabriel",
+  "email": "pedro@example.com",
+  "senha": "123456"
+}
