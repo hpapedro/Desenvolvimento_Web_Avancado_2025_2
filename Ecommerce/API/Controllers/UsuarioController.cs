@@ -25,9 +25,21 @@ public class UsuarioController : ControllerBase
 
 
     [HttpGet("listar")]
-    public IActionResult Listar()
+    public IActionResult Listar([FromQuery] string? email, [FromQuery] string? senha)
     {
         var usuarios = _usuarioRepository.Listar();
-        return Ok(usuarios);
-    }   
+
+        if (!string.IsNullOrEmpty(email))
+        {
+            usuarios = usuarios.Where(u => u.Email == email).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(senha))
+        {
+            usuarios = usuarios.Where(u => u.Senha == senha).ToList();
+        }
+
+    return Ok(usuarios);
+}
+
 }
